@@ -1,0 +1,13 @@
+# WFS PROJECT v2.7 -> v2.8 upgrade and rollback
+
+**Local release candidate only, not production.** Stop the API, workers and preview containers. Back up `data/` and `.env` into an encrypted/offline bundle. Keep `WFS_SESSION_SECRET` unchanged, otherwise previously encrypted MFA secrets cannot be decrypted. Do NOT point two versions to one live database.
+
+1. Extract v2.8 ZIP in a **new** Windows directory. Copy back **only** the matching v2.7 `.env` and `data/` backup; never overwrite the v2.8 `app/`, `scripts/`, `tests/` or `docs/` with older files.
+2. Run `python scripts/verify-release.py`, then start with `START_WFS_PROJECT.cmd`. `store.init_db` performs additive `BEGIN IMMEDIATE` migrations for `workspaces`, `projects.workspace_id` (legacy projects default to `default`), `spend_limits`, `cost_reservations`, and `preview_grants`. Every organization gets its own `default` workspace. Existing projects, MFA, sessions, grants, work, artifacts and usage history are preserved. No new spend limit is enabled automatically.
+3. Verify login/MFA, private project ACL, 13 menus, QA, operator approval, and FinOps. In AI Cost Center configure optional organization/workspace estimated admission limits, plus existing project limits and model rates. **A missing model rate under a hard limit denies new AI work.** Costs are snapshots of operator-defined rates and reported provider usage, not invoices; provider hard limits are still required.
+4. Gateway feature is **disabled** by default unless separate `WFS_PREVIEW_PUBLIC_ORIGIN`, `WFS_PREVIEW_PROXY_KEY`, TLS proxy and isolated gateway app are configured and independently validated. Never bind local operator preview ports publicly.
+5. Runner strict mode is opt-in, requires an independently provisioned Linux rootless engine, digest-pinned images, mTLS and an fs-immutable per-project staged snapshot. Do not copy TLS keys, CA private keys, operator SSH keys or archive credentials into app config or repository.
+
+**Rollback:** stop all v2.8 services. Restore exact prior v2.7 ZIP **and its matching encrypted v2.7 `.env`/`data/` snapshot** in a new directory. Do not attempt a destructive reverse migration or reuse the upgraded DB with old code without validating schema compatibility. Reset gateway/runner credentials if compromise suspected; decommission deployed new components separately. Verify login, MFA recovery and project artifact checksums on the restored copy before returning to use.
+
+**Migration test evidence:** isolated SQLite repeated `init_db` and tenant regression tests passed; a true Windows Docker Desktop migration/rollback exercise was not performed. Source release SHA-256 manifest checks only packaged files, never private `.env` or runtime DB.

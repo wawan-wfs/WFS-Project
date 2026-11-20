@@ -1,0 +1,18 @@
+{
+  "class": "PASS_LOCAL_ONLY",
+  "files": {
+    "docs/V39_EVIDENCE/pytest_group1.log": "4fa99b6e1f0436b808dc0a9ad853f8d75d7490308159508c5f75e97a301c176d",
+    "docs/V39_EVIDENCE/pytest_v39_specialist.log": "56868661e380b254c35462c9e07b896a7dd337b02e5f091b5425a1695723b617",
+    "docs/V39_EVIDENCE/pytest_group3.log": "ca26d091c8b75e6981478171930e11249ef6d77fe43976da7436c1cf53233460",
+    "docs/V39_EVIDENCE/pytest_group2.log": "0db14ef38b42444ef6362d3c9d95afb5b10c69e3fca7563068471f1f67bb1154",
+    "docs/V39_EVIDENCE/parallel_e2e.log": "fa25667a1748a1c7907ab23a20c2d5c7e5ba72e769c53611f9f3098f6a005ac4",
+    "docs/V39_EVIDENCE/http_e2e.log": "31c2f69a3bd217f6c303a3a9d8d7ce2b3b1329b21b78161d17e88126b7927f82"
+  },
+  "blocked_external": [
+    "No approved independent rootless Docker host or egress/immutable daemon evidence",
+    "No approved live TLS/PKI/authority-host setup and concurrent real-browser cross-tenant HAR",
+    "No official authenticated provider invoice/response-level reconciliation or verified hard limits",
+    "No real Windows Chrome/Edge GPU, NVDA, TOTP recovery or matched restore proof",
+    "No verified licensed rigged GLB agents or hardware benchmark"
+  ]
+}

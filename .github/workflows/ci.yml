@@ -1,0 +1,91 @@
+name: WFS PROJECT CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  app-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install test dependencies
+        run: pip install -r requirements-dev.txt
+      - name: Unit and API regression tests
+        run: |
+          python -m pytest -q -rs --ignore=tests/test_z_release.py --ignore=tests/test_visual_office.py
+          python -m pytest -q tests/test_system.py tests/test_visual_office.py
+          python -m pytest -q tests/test_z_release.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Real local HTTP / worker smoke (offline demo)
+        run: python scripts/http-e2e.py
+      - name: Multi-process queue and worker integration
+        run: python scripts/parallel-e2e.py
+      - name: Dashboard syntax
+        run: |
+          node --check app/static/office3d.js
+          node --check app/static/office3d-assets.js
+          node --check app/static/office3d-software.js
+          node --check app/static/ux-v23.js
+          node --check app/static/app.js
+          node --check app/static/studio.js
+          node --check app/static/collaboration.js
+          node --check app/static/operator.js
+          node --check app/static/finops.js
+          node --check app/static/team.js
+          node --check app/static/access.js
+          node --check scripts/serve_node_preview.cjs
+      - name: Python compile / no code execution
+        run: python -m compileall -q app scripts
+      - name: Docker image build
+        run: docker build --pull -t wfs-project:ci .
+      - name: Build operator QA Python image
+        run: docker build -f docker/qa-python.Dockerfile -t wfs-project-qa:ci .
+      - name: No-network sandbox syntax smoke
+        run: |
+          docker run --rm --network none --read-only --cap-drop ALL --security-opt no-new-privileges --pids-limit 64 --memory 512m --cpus 1 --user 10001:10001 --tmpfs /tmp:rw,noexec,nosuid,size=64m -v "$PWD:/workspace:ro" -v "$PWD/scripts/qa_probe.py:/trusted/qa_probe.py:ro" python:3.12-slim python -B /trusted/qa_probe.py
+      - name: Compose parse
+        run: |
+          cp .env.example .env
+          docker compose config --quiet
+
+  admission-lab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install local lab requirements
+        run: pip install -r requirements-dev.txt -r requirements-postgres-lab.txt
+      - name: PostgreSQL transactional quota experiment
+        run: PYTHONPATH=. python scripts/postgres-quota-lab.py
+      - name: Disposable primary and standby quota replay
+        run: PYTHONPATH=. python scripts/postgres-replica-lab.py
+      - name: Local Unix authority across separate API processes
+        run: PYTHONPATH=. python scripts/sse-two-api-lab.py
+
+  browser-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser test dependencies
+        run: |
+          pip install -r requirements-dev.txt playwright
+          python -m playwright install --with-deps chromium
+      - name: Chromium fixture pages / office UI
+        run: python scripts/browser-ui-fixture-smoke.py
+      - name: Browser against real local FastAPI + worker
+        run: python scripts/browser-local-e2e.py

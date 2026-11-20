@@ -1,0 +1,12 @@
+{
+  "version": "4.9.0-rc1",
+  "baseline_zip": "WFS_PROJECT_v4.8_BACKUP_FINGERPRINT_LOCAL_RC_Windows_Docker.zip",
+  "baseline_sha256": "d5806a8b8c3f38affd89bcf9ad2562cbb4741babe904c5b188b7bf58bed68f21",
+  "completed": ["1093 baseline hashes", "Pinned and redacted stopped-clone verification", "Serial same-host PostgreSQL labs", "HTTP, workers, browser and responsive regression"],
+  "pytest": {"distinct_passed": 303, "subtests_passed": 128, "skipped": 28},
+  "blocked_runtime": ["AF_UNIX EPERM", "Root-owned staging fixtures unavailable", "nginx unavailable"],
+  "blocked_external": ["Independent PostgreSQL fence and rejoin", "Windows Docker restore, startup, hardware and accessibility", "Independent rootless Docker, TLS/CRL and provider"],
+  "production_admission": "DENIED",
+  "next_action": "On approved Linux with AF_UNIX run python scripts/run-operator-evidence-v46.py --output evidence-linux.json",
+  "next_prompt": "docs/NEXT_PROMPT.md"
+}

@@ -1,0 +1,61 @@
+{
+  "classification": "LOCAL_STOPPED_CLONES",
+  "cases": {
+    "intact": {
+      "returncode": 0,
+      "report": {
+        "schema": "wfs-recovery-summary-v1",
+        "status": "DELIVERED_MATCH",
+        "reference": "SHA256_PINNED",
+        "checked": 2,
+        "expected_projects": 2,
+        "missing_projects": 0,
+        "unexpected_projects": 0,
+        "different_generations": 0,
+        "artifact_check_failures": 0
+      }
+    },
+    "missing": {
+      "returncode": 2,
+      "report": {
+        "schema": "wfs-recovery-summary-v1",
+        "status": "DELIVERED_MISMATCH",
+        "reference": "SHA256_PINNED",
+        "checked": 1,
+        "expected_projects": 2,
+        "missing_projects": 1,
+        "unexpected_projects": 0,
+        "different_generations": 0,
+        "artifact_check_failures": 0
+      }
+    },
+    "mixed": {
+      "returncode": 2,
+      "report": {
+        "schema": "wfs-recovery-summary-v1",
+        "status": "DELIVERED_MISMATCH",
+        "reference": "SHA256_PINNED",
+        "checked": 2,
+        "expected_projects": 2,
+        "missing_projects": 0,
+        "unexpected_projects": 0,
+        "different_generations": 1,
+        "artifact_check_failures": 0
+      }
+    },
+    "reencoded_reference": {
+      "returncode": 2,
+      "report": {
+        "schema": "wfs-recovery-summary-v1",
+        "status": "INVENTORY_CHECKSUM_MISMATCH",
+        "reference": "SHA256_PINNED",
+        "checked": 0,
+        "expected_projects": 0,
+        "missing_projects": 0,
+        "unexpected_projects": 0,
+        "different_generations": 0,
+        "artifact_check_failures": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+# WFS PROJECT v4.9 — Host acceptance and recovery proof
+
+Start from the published v4.8 source ZIP. Verify distribution SHA-256 and all internal hashes before changes. Read AGENTS.md, docs/AUTONOMOUS_STATE.json, docs/ACCEPTANCE_MATRIX_V48.md, docs/OPERATOR_EVIDENCE_V48.md, and docs/POSTGRES_REPLICATION_LAB_V48.md. Do not use the separate AI-Office repository.
+
+Run every independent authorized track in this session. Checkpoint each result and continue when another track is blocked. For each blocker provide the operator role, observed reason, next runnable command and exact missing evidence. Do not relabel a local simulation or skipped test as a host pass.
+
+1. **Linux transport.** On approved isolated Linux with working AF_UNIX run `python scripts/run-operator-evidence-v46.py --output evidence-linux.json`. Record genuine two-API and focused test evidence for quota, disconnect release, fail-closed outage, rotation/revocation, restart and broker deadlines. No TCP substitution.
+2. **PostgreSQL.** On approved independent disposable nodes use verified fencing before promotion. Record old-writer refusal, synchronous retry under lag/loss, strict rejection before synchronous re-enrolment, and a new acknowledged lease visible on the read-only replacement. Run the two loopback labs serially as a separate track. Laboratory observations are not independent or power-loss proof.
+3. **Windows recovery.** On an approved Windows Docker Desktop clone, use an inventory kept outside the restored tree and created from the stopped backup before restore. Test the intact clone, a clone with a missing delivery, and a disposable mixed generation with matching DB/files but different from the reference. Start the intact clone independently and document 600 seconds per hardware browser, native 200% zoom, keyboard, NVDA and test-account MFA recovery. If Windows is unavailable, run only stopped-clone Python tests and record the wrapper gap.
+4. **Regression and release.** Preserve 13 menus, 10 divisions, truthful telemetry, tenant/MFA, budget and work leases. Run grouped regression, HTTP, worker, browser and responsive checks. Deduplicate overlapping test counts. Keep logs redacted, create and verify a versioned ZIP and labeled fixture gallery from clean extraction, and write the next prompt and state.
+
+Production remains denied pending independent evidence. No real credentials, paid provider use, public preview, or changes to production are authorized.

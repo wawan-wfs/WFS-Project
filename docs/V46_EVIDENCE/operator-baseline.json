@@ -1,0 +1,27 @@
+{
+  "classification": "LOCAL_ONLY",
+  "production_admission": "DENIED",
+  "utc": "2026-11-14T15:42:00.593740+00:00",
+  "gates": {
+    "manifest": {
+      "status": "PASS_LOCAL",
+      "returncode": 0,
+      "elapsed_seconds": 0.709
+    },
+    "uds": {
+      "status": "BLOCKED_RUNTIME",
+      "returncode": 77,
+      "elapsed_seconds": 0.115
+    },
+    "http": {
+      "status": "PASS_LOCAL",
+      "returncode": 0,
+      "elapsed_seconds": 17.658
+    },
+    "workers": {
+      "status": "PASS_LOCAL",
+      "returncode": 0,
+      "elapsed_seconds": 3.375
+    }
+  }
+}

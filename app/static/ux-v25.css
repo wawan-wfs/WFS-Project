@@ -1,0 +1,11 @@
+/* WFS v2.5 secure account controls - progressive enhancement; no network assets */
+.wfs-mfa-panel{margin-top:18px}.wfs-mfa-panel .panel-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.wfs-mfa-panel .mfa-status{font-weight:750;letter-spacing:.04em;font-size:11px;color:#b7e4cf;border:1px solid #73baa873;border-radius:99px;padding:8px 12px;background:#142e2a}
+.wfs-mfa-panel .mfa-stack{display:flex;flex-direction:column;gap:12px;max-width:550px;margin-top:18px;min-width:0}
+.wfs-mfa-panel .mfa-stack[hidden]{display:none!important}.wfs-mfa-panel input{width:100%;max-width:390px}
+.wfs-mfa-panel .mfa-secret{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px;border:1px dashed #8fa8ca66;border-radius:12px;background:#0d1928;max-width:100%}
+.wfs-mfa-panel code{font-family:ui-monospace,Consolas,monospace;font-size:13px;overflow-wrap:anywhere;color:#f1e6bc}
+.wfs-mfa-panel pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0a1422;border:1px solid #8395b64d;border-radius:12px;padding:16px;color:#f3f0dc;line-height:1.8}
+#login-otp-wrap{margin-top:12px}#login-otp-wrap[hidden]{display:none!important}#login-otp{width:100%}
+@media(max-width:720px){.wfs-mfa-panel{padding:16px}.wfs-mfa-panel .mfa-secret{align-items:stretch}}
+@media(forced-colors:active){.wfs-mfa-panel .mfa-status{border:1px solid CanvasText}}

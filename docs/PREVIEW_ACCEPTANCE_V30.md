@@ -1,0 +1,7 @@
+# WFS PROJECT v3.0 — Preview admission status
+
+**Not accepted for external deployment.** The existing v2.8/v2.9 isolated-origin static/React gateway preserves one-use ticket exchange, Secure/HttpOnly path-scoped preview cookies, short expiry, and project/session/org revocation checks on every request. Its tests run locally through FastAPI TestClient with a simulated trusted TLS proxy header.
+
+No real TLS origin, DNS, trusted proxy identity, concurrent-tenant browser HAR, or independent red team was exercised for v3.0. The sample reverse proxy in `docs/PREVIEW_GATEWAY_V28.md` is **illustrative only**. Access logging of `/t/<secret>` must remain off or irreversibly redacted; the gateway must remain bound to loopback behind a separately authenticated TLS proxy. The main dashboard and the preview MUST NOT share a public origin. Generated dynamic backend containers must not receive public ingress or direct loopback ports reachable by outsiders. The current static gateway does NOT proxy dynamic FastAPI/Node/PostgreSQL preview containers; that remains a P0 blocker.
+
+Acceptance requires actual separate TLS gateway deployment, no direct service-port exposure, authentic login and MFA, concurrent-tenant cross-access denial, session/project revocation during active connections, response headers, cookie scope, CSP tests, redacted HAR and origin separation verified from browsers. Do not substitute a local fixture or a proxy-header mock for this.

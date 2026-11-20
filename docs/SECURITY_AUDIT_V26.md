@@ -1,0 +1,25 @@
+# WFS PROJECT v2.6.0-rc1 — Tenant-boundary security review
+
+**Classification: PARTIAL v2.6 implementation; local release candidate only. NOT internet-ready or certified multitenant.** Baseline: exact v2.5.0 Windows/Docker source. Evidence date: 2026-11-08. See `docs/ACCEPTANCE_MATRIX_V26.md`.
+
+## Implemented and tested
+
+- Additive SQLite `organizations`, `organization_id` on users/projects, tenant-specific model-rate table, transactional migration and default-org legacy backfill. The server derives the organization from the authenticated account; no client-selected tenant is trusted. Legacy projects stay in the **default** org, including those with `workspace` visibility.
+- Tenant qualification in project authorization, project creation/revisions, team directory, project grants and immediate revocation, event cursor/SSE, office/live views, agent directory/run details, queue, operator jobs, artifact lists, previews, project files, project activity, aggregated FinOps and per-model pricing. Tests create three separate organizations and probe forbidden IDs.
+- Deny even built-in owner account access to projects in other organizations. `workspace` means shared inside the same organization, not global. Cross-organization membership grants are rejected. No autonomous migration of existing projects to another organization.
+- Optional per-org **mandatory RFC6238 authenticator** policy, controlled by an **offline-only** operator tool. An enrolled user is challenged on subsequent logins as in v2.5; an unenrolled user may use only self-enrollment, current session information, session revocation, and logout. Disabling factor is denied under mandatory policy. Secret encryption, one-time recovery codes and offline recovery process remain from v2.5.
+- Per-account **session/device inventory** based on hashed random session identifiers. Device string is a sanitised, user-agent-supplied label (not attestation). Users can revoke their own individual or other active sessions. CSRF and account association enforced. Session tokens, raw IP and MFA secrets are never returned in the list.
+- Existing preview route follows project authorization in `auth.current_session`. The local static preview is an inline, CSP-sandboxed route, **not** the expiring TLS reverse-proxy system requested for production.
+
+## Residual risks and out-of-scope work
+
+1. **Not fully multitenant:** no separately governed workspace entity with independent roles and quotas. Shared process concurrency and AI provider spend are not independently reserved per organization; cost data are local **estimates**, not reconciled official invoices. Some internal worker/admin functions are trusted-process helpers, not tenant-bound APIs. Full route/data-flow threat-model review, fuzzing, cross-tenant red team and migration to stronger database row-level security are required.
+2. **Rootless-host isolation not proven:** the v2.5 QA CLI uses `--network none`, read-only mounts, caps dropped, resource bounds and an unprivileged UID, but still relies on a local Docker daemon and mutable tags. Host separation, immutable image digest admission, actual rootless daemon, egress policy, credential isolation, cleanup negative tests and post-run mount verification have **NOT been executed/implemented** end to end. Never hand direct Docker socket access to an AI worker.
+3. **Dynamic preview** is still on local loopback/operator infrastructure; the requirement for tenant-isolated TLS preview origins, authenticated expiring URLs and strict trust boundary remains open. Do not bind the app or preview ports to the public internet.
+4. **MFA/WebAuthn**: policy is local-operator controlled; no SSO, organization policy GUI, authenticated security key registration, device attestation, risk scoring, tested clock-drift handling or credential rotation workflow. Recovery via existing `scripts/reset-mfa-local.py` remains a privileged offline operation; it resets the factor but does not bypass an enforced org policy.
+5. **No security certification:** no live provider/API keys, Windows/Docker Desktop, external penetration test, cross-origin TLS proxy or Windows screen-reader acceptance executed in this environment. The 26 screenshots are fixture-only, not real user work.
+6. The `org-provision-local.py` tool creates exactly one manager for each new organization. New-organization member provisioning and policy delegation are not yet exposed through a secure tenant-admin UI; organization creation requires database-owner filesystem access. The built-in owner can still manage only the default org.
+
+## Incident and deployment restrictions
+
+Back up `.env` and `data/` together, protect them separately at rest, stop services before offline provisioning/policy changes and test restore. Keep `WFS_SESSION_SECRET` intact or existing encrypted TOTP secrets cannot be decrypted. Keep app behind loopback until isolated Docker, independent credentials, authenticated TLS preview, red team and MFA recovery tests pass. Never call fixture activity production telemetry.

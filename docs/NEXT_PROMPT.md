@@ -1,0 +1,12 @@
+# WFS PROJECT v5.0 — Close host acceptance gates
+
+Begin with the published v4.9 source ZIP. Validate distribution SHA-256 and every internal hash before editing. Read AGENTS.md, docs/AUTONOMOUS_STATE.json, docs/ACCEPTANCE_MATRIX_V49.md, docs/OPERATOR_EVIDENCE_V49.md and docs/POSTGRES_REPLICATION_LAB_V49.md. Do not switch to the separate AI-Office repository.
+
+Work through all authorized tracks in this session. On a blocker record the responsible operator role, observed reason, next command or infrastructure runbook, and exact missing proof. Continue all independent runnable checks. Do not promise background completion or convert skipped or fixture work into host acceptance.
+
+1. On approved isolated Linux with AF_UNIX run `python scripts/run-operator-evidence-v46.py --output evidence-linux.json`. Review genuine two-API and focused test IDs covering quota, disconnect release, failure denial, restart and broker deadlines plus rotation and revocation. No TCP substitution.
+2. With approved disposable independent PostgreSQL nodes, verify fencing before promotion and old-writer refusal. Record strict retry under replay lag or standby loss, refusal until synchronous re-enrolment, and a new acknowledged lease read from the read-only replacement. Run the two loopback labs serially for separate local evidence only.
+3. Use an approved Windows Docker Desktop clone. Record an inventory from a verified stopped backup. Independently store its SHA-256 before restore. Run pinned summary checks on intact, incomplete and mixed-generation clones. Start the intact clone independently and capture 600 seconds on each hardware browser, native zoom at 200%, keyboard-only operation, NVDA and test-account MFA recovery. Keep reference contents, credentials and real account details private. If Windows is unavailable, retain Python stopped-clone checks and mark wrapper/hardware unverified.
+4. Preserve all 13 menus, 10 divisions, truthful demo and live telemetry, tenant/MFA controls, cost limits and worker leases. Re-run local regression, HTTP, workers, browser and responsive checks. Deduplicate results, retain redacted evidence, verify versioned source and labeled fixture gallery from clean extraction, and record state and next prompt. Carry all remaining rootless Docker, TLS/CRL and billing gates explicitly.
+
+Production admission remains denied until independent requirements are met. This prompt does not authorize real credentials, provider charges, publicly exposed previews, or production changes.

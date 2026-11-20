@@ -1,0 +1,4 @@
+UI FIXTURE DESKTOP 13 routes + MFA, no horizontal overflow
+UI FIXTURE MOBILE 13 routes + MFA, no horizontal overflow
+OFFICE METRICS {'renderer': 'cpu-3d', 'assetMode': 'local-glb', 'geometryTriangles': 9520, 'drawCalls': 13, 'activeDrawsPerSecond': None, 'meanFrameSubmitMs': 24.92, 'gpuTimerSupported': False, 'gpuQuerySamples': 0, 'meanGpuTimeMs': None, 'measurement': 'CPU submit wall time only; GPU time unverified', 'quality': 'auto'}
+v2.5 login 2FA challenge UI flow: PASS (fake server)

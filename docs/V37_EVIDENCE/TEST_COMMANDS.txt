@@ -1,0 +1,15 @@
+Source root: WFS_PROJECT
+Source baseline: sha256sum WFS_PROJECT_v3.6_SSE_FINOPS_LOCAL_RC_Windows_Docker.zip
+Before editing: python scripts/verify-release.py -> checked 588, PASS
+Source regression: monolithic pytest -> reached 100%, timed out, NOT PASS
+Group 1: PYTHONPATH=. python -m pytest -q [test files sorted indices 0..12] -> 109 passed 20 subtests, exit 0
+Group 2: PYTHONPATH=. python -m pytest -q [sorted indices 13..27] -> 69 passed 31 subtests, exit 0
+Group 3: PYTHONPATH=. python -m pytest -q [sorted indices 28..41] -> 59 passed 50 subtests, exit 0
+Visual: PYTHONPATH=. python -m pytest -q tests/test_visual_office.py -> 8 passed, exit 0
+HTTP: PYTHONPATH=. python scripts/http-e2e.py -> PASS, exit 0
+Worker: PYTHONPATH=. python scripts/parallel-e2e.py -> PASS 3 workers, 9 demo projects, 45 artifacts, exit 0
+Syntax: python -m compileall -q app scripts; node --check app/static/app.js; node --check app/static/office3d.js; node --check app/static/finops.js -> exit 0
+Docker: command -v docker -> no binary, BLOCKED_EXTERNAL
+Windows: pwsh not found, BLOCKED_EXTERNAL
+Release gate: PYTHONPATH=. python -m pytest -q tests/test_z_release.py -> 8 passed, exit 0
+Clean-archive mixed v3.7+release: PYTHONPATH=. python -m pytest -q tests/test_v37_broker_backpressure.py tests/test_v37_sse_backpressure.py tests/test_z_release.py -> 17 passed, 8 subtests, exit0

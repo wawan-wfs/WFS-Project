@@ -1,0 +1,5 @@
+# WFS PROJECT v3.1.0-rc1 — Per-project dynamic preview transport (PARTIAL)
+
+Continues exact v3.0.0-rc1 source; 13 pages, Master Agent/10 divisions, worker, RBAC/org, MFA, FinOps, static/React preview, and eight original GLB assets preserved. Adds Linux Unix-domain socket dynamic preview broker for operator-provisioned FastAPI/Node apps with mandatory project-specific hostname, trust headers, ticket one-use and grant checks, host-only cookies, filtered headers, size caps, CSP, UID/peer-check and local adversarial tests. Adds operator-only HTTPS unauthenticated negative probe. Browser fixture screenshots are clearly labeled synthetic.
+
+**Not delivered or verified:** actual independent rootless Docker host, real TLS hostname and deployed dynamic containers, official billing export, hard spend limits, Windows GPU/NVDA/real authenticator recovery or external pentest. This build is not production ready. Documentation: `docs/PREVIEW_BROKER_V31.md`, `docs/ACCEPTANCE_MATRIX_V31.md`, `docs/MIGRATION_V31.md`.

@@ -1,0 +1,8 @@
+V28 baseline project: 0fba229b13b544219458
+V28 response ID column exists? False
+V29 migration project count: 1
+V29 response ID column exists: True
+Org and workspace: ('default', 'default')
+Project ID persisted: 0fba229b13b544219458
+V28 rollback matched-backup project count: 1
+V28 backup still lacks v29 column: True

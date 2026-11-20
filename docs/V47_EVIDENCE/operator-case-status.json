@@ -1,0 +1,59 @@
+{
+  "classification": "LOCAL_ONLY",
+  "production_admission": "DENIED",
+  "utc": "2026-11-14T15:50:14.615665+00:00",
+  "gates": {
+    "manifest": {
+      "status": "PASS_LOCAL",
+      "returncode": 0,
+      "elapsed_seconds": 0.265
+    },
+    "uds": {
+      "status": "BLOCKED_RUNTIME",
+      "cases": {
+        "two_api.cross_process_quota": "NOT_RUN",
+        "two_api.disconnect_release": "NOT_RUN",
+        "two_api.outage_fail_closed": "NOT_RUN",
+        "two_api.transport_secret_rotation": "NOT_RUN",
+        "two_api.old_assertion_rejected": "NOT_RUN",
+        "two_api.live_session_revocation": "NOT_RUN"
+      },
+      "returncode": 77,
+      "elapsed_seconds": 0.089
+    },
+    "focused": {
+      "status": "BLOCKED_RUNTIME",
+      "cases": {
+        "test_v40_sse_admission.AdmissionProcessV40.test_assertion_authority_real_uds_when_available": "SKIPPED",
+        "test_v40_sse_admission.AdmissionProcessV40.test_authenticated_control_and_replay_deny": "SKIPPED",
+        "test_v40_sse_admission.AdmissionProcessV40.test_crash_restart_ttl_and_fail_closed": "SKIPPED",
+        "test_v40_sse_admission.AdmissionProcessV40.test_session_revocation_remains_required_inside_stream": "SKIPPED",
+        "test_v40_sse_admission.AdmissionProcessV40.test_two_tenants_natted_sessions_concurrent_disconnect_replay": "SKIPPED",
+        "test_v38_broker_deadlines.SlowBrokerV38.test_cancelled_client_closes_socket_and_releases_slot": "SKIPPED",
+        "test_v38_broker_deadlines.SlowBrokerV38.test_real_unix_transport_and_strip_auth": "SKIPPED",
+        "test_v38_broker_deadlines.SlowBrokerV38.test_slow_upstream_aborted_and_slot_released": "SKIPPED",
+        "test_v38_broker_deadlines.SlowBrokerV38.test_total_request_body_deadline_rejects_slow_trickle": "SKIPPED",
+        "test_v41_sse_identity.LocalAssertions.test_claim_rechecks_revocation_and_mfa_before_quota_write": "PASS",
+        "test_v41_sse_identity.LocalAssertions.test_forward_skew_nonce_cannot_replay_after_original_retention": "PASS",
+        "test_v41_sse_identity.LocalAssertions.test_issuer_requires_real_bearer_and_live_tenant_grant": "PASS",
+        "test_v41_sse_identity.LocalAssertions.test_replay_restart_ttl_and_two_independent_organization_caps": "PASS",
+        "test_v41_sse_identity.LocalAssertions.test_signed_wrong_issuer_audience_expiry_and_tamper_are_rejected": "PASS",
+        "test_v41_sse_identity.SSECancellation.test_assertion_mode_misconfiguration_returns_503": "PASS",
+        "test_v41_sse_identity.SSECancellation.test_cancelled_admission_releases_a_late_reservation": "PASS",
+        "test_v41_sse_identity.SSECancellation.test_failed_send_releases_even_before_first_chunk": "PASS"
+      },
+      "returncode": 0,
+      "elapsed_seconds": 1.923
+    },
+    "http": {
+      "status": "PASS_LOCAL",
+      "returncode": 0,
+      "elapsed_seconds": 1.822
+    },
+    "workers": {
+      "status": "PASS_LOCAL",
+      "returncode": 0,
+      "elapsed_seconds": 1.275
+    }
+  }
+}

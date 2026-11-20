@@ -1,0 +1,37 @@
+/* WFS 2.4 / unified spatial workbench, accessible semantic detail panels. */
+:root{--wfs-surface-glass:#16233bdc;--wfs-focus:#c2f0e4;--wfs-section-space:24px}
+.office3d-task-inspector{padding:16px 18px;border-top:1px solid #a3a4f33b;border-bottom:1px solid #a3a4f326;background:linear-gradient(110deg,#172743,#1e2744 68%,#152e40);display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+.office3d-task-inspector>div:first-child{flex:1 1 170px;min-width:0}.office3d-task-inspector h3{margin:6px 0;font-weight:770;font-size:14px;color:#f2f4ff}.office3d-task-inspector p{max-width:380px;font-size:10px;line-height:1.6;color:#b4c7e0;margin:5px 0 0}
+.office3d-task-inspector dl{margin:0;display:grid;grid-template-columns:minmax(100px,1fr) minmax(100px,1.2fr);gap:10px;flex:2 1 240px;min-width:0}.office3d-task-inspector dl>div:last-child{grid-column:1 / -1}.office3d-task-inspector dt{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#8da2c1}.office3d-task-inspector dd{font-size:11px;margin:4px 0 0;color:#edf3ff;overflow-wrap:anywhere}
+.office3d-task-inspector button{flex:0 0 auto}.office3d-task-inspector button:disabled{opacity:.42;cursor:not-allowed}
+/* Shared component affordances on all thirteen routes, preserving dense workflows. */
+.page-view .page-hero{margin-bottom:22px}.page-view .page-hero h1{letter-spacing:-.045em}.page-view .panel{border-radius:16px}.page-view .panel:hover{border-color:#ffffff2e}
+.page-view button,.page-view input,.page-view select,.page-view textarea{transition:background-color .16s ease,border-color .16s ease,box-shadow .16s ease}
+.page-view [role="status"],.page-view [role="alert"]{overflow-wrap:anywhere}.page-view a:focus-visible,.page-view button:focus-visible{outline:2px solid var(--wfs-focus);outline-offset:3px}
+@media(max-width:720px){.office3d-task-inspector{padding:14px;align-items:stretch;gap:12px}.office3d-task-inspector>div:first-child{flex-basis:100%}.office3d-task-inspector dl{flex-basis:100%;gap:10px}.office3d-task-inspector button{width:100%}}
+@media(prefers-reduced-motion:reduce){.page-view button,.page-view input,.page-view select,.page-view textarea{transition:none!important}}
+@media(forced-colors:active){.office3d-task-inspector{border-top:1px solid CanvasText;border-bottom:1px solid CanvasText}.office3d-task-inspector button:focus-visible{outline:2px solid Highlight}}
+
+.office3d-room.is-selected{background:linear-gradient(90deg,#423d65,#19344e);border-color:#dfc49c;box-shadow:inset 3px 0 #e7cfad}
+/* Shared SaaS quality refinement: consistent visual hierarchy and interactive density. */
+:root{--wfs-elevated:#18243a;--wfs-divider:#ffffff1b;--wfs-soft:#adbdd4;--wfs-positive:#88e0c3}
+.page-view .page-hero{padding:22px 24px;border:1px solid #7789b131;background:linear-gradient(115deg,#1b2741bd,#111a2b7c 65%,#152741b8);border-radius:18px;box-shadow:0 10px 35px #03091833}
+.page-view .page-hero .eyebrow{letter-spacing:.135em;color:#c2b3ff}
+.page-view .page-hero h1{font-weight:790;line-height:1.06;color:#f7f9ff}
+.page-view .page-hero p{color:#b9c7da;line-height:1.65;max-width:790px}
+.page-view .panel,.page-view .collab-panel,.page-view .directory-card{border:1px solid #ffffff23;background:linear-gradient(180deg,#18253a,#101a2c 87%);box-shadow:0 12px 30px #00000024}
+.page-view .panel-head,.page-view .collab-header{gap:12px}.page-view h2{letter-spacing:-.018em}
+.page-view .empty-state,.page-view .empty-small{color:#b4c1d5;line-height:1.6}
+.page-view button.primary{background:linear-gradient(135deg,#a89afb,#8172db);color:#100f29;border:1px solid #d1c6ffad;box-shadow:0 7px 20px #7770c538;font-weight:800}
+.page-view button.primary:hover:not(:disabled){background:linear-gradient(135deg,#bcafff,#998de9)}
+.page-view button.outline,.page-view .outline.small{border-color:#7f8ead79;color:#e0e9f9;background:#202d43b3}
+.page-view button.outline:hover:not(:disabled),.page-view .outline.small:hover:not(:disabled){background:#30415d;border-color:#aca7e1}
+.page-view input:not([type="checkbox"]),.page-view select,.page-view textarea{background:#101c30;border-color:#566681;color:#f4f7ff;min-height:36px}
+.page-view input::placeholder,.page-view textarea::placeholder{color:#96a5c2}
+.page-view input:focus-visible,.page-view select:focus-visible,.page-view textarea:focus-visible{background:#192743;border-color:#a5a1fa;box-shadow:0 0 0 3px #a99aff24}
+.page-view [disabled]{cursor:not-allowed;opacity:.58}
+.page-view .state-pill,.page-view .collab-status{font-variant-numeric:tabular-nums}
+.page-view .grounded-note{line-height:1.65;color:#a7b7ce}
+#page-office .page-hero{background:linear-gradient(120deg,#20244d,#172d47 68%,#12283b)}
+@media(max-width:720px){.page-view .page-hero{padding:18px 17px}.page-view .page-hero h1{font-size:clamp(27px,8vw,36px)}.page-view .page-hero p{font-size:12px}.page-view .panel{box-shadow:none}}
+@media(prefers-contrast:more){.page-view .panel,.page-view .page-hero{border-color:#adb8d9}.page-view .page-hero p,.page-view .grounded-note{color:#e1eaf8}}

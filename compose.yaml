@@ -1,0 +1,32 @@
+name: wfs-project
+x-common: &common
+  build: .
+  init: true
+  restart: unless-stopped
+  env_file:
+    - .env
+  environment:
+    WFS_DATA_DIR: /app/data
+  volumes:
+    - ./data:/app/data
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+  pids_limit: 128
+  mem_limit: 1024m
+  cpus: 2
+  read_only: true
+  tmpfs:
+    - /tmp:rw,noexec,nosuid,size=64m
+services:
+  api:
+    <<: *common
+    ports:
+      - '127.0.0.1:8080:8080'
+  worker:
+    <<: *common
+    command: ['python','-m','app.worker']
+    # Worker is not an HTTP server; the API healthcheck must not apply to it.
+    healthcheck:
+      disable: true

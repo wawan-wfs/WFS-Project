@@ -1,0 +1,4 @@
+# Optional local-only lab dependencies. The WFS application does not import these.
+psycopg[binary]>=3.2,<4
+# For a disposable Linux CPython 3.12 PostgreSQL binary fixture if none is installed.
+pgserver==0.1.4; platform_system == "Linux" and python_version == "3.12"

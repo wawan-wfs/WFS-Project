@@ -1,0 +1,22 @@
+{
+  "classification": "PASS_SINGLE_HOST_REPLICATION_LAB",
+  "postgres": "16.2",
+  "acknowledged_leases": 17,
+  "retained_identical": 17,
+  "standby_read_only": true,
+  "missing_standby_rejected": true,
+  "promotion_refused_while_old_primary_running": true,
+  "old_primary_stopped_before_promotion": true,
+  "promotion_and_replay_seconds": 0.351,
+  "replay_paused_not_acknowledged": true,
+  "retry_waited_for_replay": true,
+  "commit_watchdog_seconds": 1.2,
+  "unavailable_after_seconds": 1.219,
+  "cancel_mode": "client watchdog; no operator cancel",
+  "lab_refused_restart_of_retired_directory": true,
+  "rebuilt_standby_read_only": true,
+  "post_promotion_strict_rejected_before_rejoin": true,
+  "post_promotion_mode": "remote_apply after explicit synchronous enrolment",
+  "post_promotion_new_lease_replayed": true,
+  "independent_hosts": false
+}

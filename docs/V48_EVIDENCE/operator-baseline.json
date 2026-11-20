@@ -1,0 +1,35 @@
+{
+  "classification": "LOCAL_ONLY",
+  "production_admission": "DENIED",
+  "utc": "2026-11-18T15:28:17.112646+00:00",
+  "gates": {
+    "manifest": {
+      "status": "PASS_LOCAL",
+      "returncode": 0,
+      "elapsed_seconds": 0.215
+    },
+    "uds": {
+      "status": "BLOCKED_RUNTIME",
+      "cases": {
+        "two_api.cross_process_quota": "NOT_RUN",
+        "two_api.disconnect_release": "NOT_RUN",
+        "two_api.outage_fail_closed": "NOT_RUN",
+        "two_api.transport_secret_rotation": "NOT_RUN",
+        "two_api.old_assertion_rejected": "NOT_RUN",
+        "two_api.live_session_revocation": "NOT_RUN"
+      },
+      "returncode": 77,
+      "elapsed_seconds": 0.049
+    },
+    "http": {
+      "status": "PASS_LOCAL",
+      "returncode": 0,
+      "elapsed_seconds": 1.419
+    },
+    "workers": {
+      "status": "PASS_LOCAL",
+      "returncode": 0,
+      "elapsed_seconds": 0.917
+    }
+  }
+}

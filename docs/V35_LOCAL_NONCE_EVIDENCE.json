@@ -1,0 +1,14 @@
+{
+  "classification": "PASS_LOCAL_ONLY",
+  "provider_cost": 0,
+  "workers": 4,
+  "unique_nonces": 64,
+  "replay_competitors": 4,
+  "unique_accepted": 64,
+  "same_nonce_accepted": 1,
+  "elapsed_ms": 1874.5,
+  "p50_request_ms": 2.26,
+  "p95_request_ms": 13.206,
+  "real_host_proof": false,
+  "production_admission": "DENIED"
+}

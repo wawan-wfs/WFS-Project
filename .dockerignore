@@ -1,0 +1,20 @@
+# Never transmit secrets, user projects, backups, runtime artifacts to Docker build context.
+.env
+.env.*
+!.env.example
+data/
+**/__pycache__/
+**/*.pyc
+.git/
+.github/
+**/.venv/
+**/node_modules/
+**/.npm-cache/
+*.zip
+*.log
+*.sqlite3
+wfs-backup-*
+backup-*
+.vscode/
+.idea/
+tests/

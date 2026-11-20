@@ -1,0 +1,32 @@
+{
+  "classification": "PASS_LOCAL_SINGLE_PRIMARY",
+  "postgres": "16.2",
+  "fsync": "on",
+  "synchronous_commit": "on",
+  "clean_restart": true,
+  "immediate_stop_recovery": true,
+  "discarded_commit_ack_retry": true,
+  "rollback": true,
+  "expired_lease_replaced": true,
+  "bounded_lock_wait": true,
+  "fixture_lease_ttl_seconds": 300,
+  "cleanup": {
+    "seeded": 10000,
+    "first_batch": 64,
+    "remaining_deleted": 9936,
+    "remaining_batches": 78,
+    "remaining_elapsed_s": 0.62
+  },
+  "benchmark": {
+    "attempted": 1200,
+    "admitted": 24,
+    "denied": 1176,
+    "unavailable": 0,
+    "unavailable_reasons": {},
+    "clients": 32,
+    "elapsed_s": 4.284,
+    "requests_per_s": 280.1,
+    "median_ms": 108.63,
+    "p95_ms": 169.02
+  }
+}
