@@ -1,7 +1,8 @@
 name: WFS PROJECT CI
 on:
-  push:
+  workflow_dispatch:
   pull_request:
+    types: [opened, reopened]
 permissions:
   contents: read
 jobs:
